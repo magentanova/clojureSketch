@@ -32971,39 +32971,27 @@ cljs.core.find_macros_ns = function cljs$core$find_macros_ns(ns) {
 cljs.core.ns_name = function cljs$core$ns_name(ns_obj) {
   return ns_obj.name;
 };
-goog.provide("src.core");
+goog.provide("clojure_sketch.core");
 goog.require("cljs.core");
-cljs.core.enable_console_print_BANG_.call(null);
-src.core.qs = function src$core$qs(sel) {
+clojure_sketch.core.num_blocks = 1000;
+clojure_sketch.core.a_block = "\x3cdiv class\x3d'block'\x3e\x3c/div\x3e";
+clojure_sketch.core.all_the_blocks = function clojure_sketch$core$all_the_blocks() {
+  return cljs.core.reduce.call(null, cljs.core.str, "", cljs.core.repeat.call(null, clojure_sketch.core.num_blocks, clojure_sketch.core.a_block));
+};
+clojure_sketch.core.qs = function clojure_sketch$core$qs(sel) {
   return document.querySelector(sel);
 };
-src.core.populate = function src$core$populate() {
-  var x = 0;
-  var html = "";
-  while (true) {
-    if (x > 1000) {
-      return html;
-    } else {
-      var G__9753 = x + 1;
-      var G__9754 = [cljs.core.str.cljs$core$IFn$_invoke$arity$1(html), cljs.core.str.cljs$core$IFn$_invoke$arity$1("\x3cdiv class\x3d'block'\x3e\x3c/div\x3e")].join("");
-      x = G__9753;
-      html = G__9754;
-      continue;
-    }
-    break;
-  }
+clojure_sketch.core.container_el = clojure_sketch.core.qs.call(null, "#container");
+clojure_sketch.core.grey_color = "#ddd";
+clojure_sketch.core.white_color = "white";
+clojure_sketch.core.white_QMARK_ = function clojure_sketch$core$white_QMARK_(color) {
+  return cljs.core._EQ_.call(null, color, clojure_sketch.core.white_color);
 };
-src.core.containerEl = src.core.qs.call(null, "#container");
-src.core.getNewColor = function src$core$getNewColor(inputColor) {
-  if (cljs.core._EQ_.call(null, inputColor, "white")) {
-    return "#ddd";
-  } else {
-    return "white";
-  }
+clojure_sketch.core.click_on_container = function clojure_sketch$core$click_on_container(js_evt) {
+  var target_el = js_evt["target"];
+  var target_bg_color = target_el["style"]["background"];
+  var new_bg_color = cljs.core.truth_(clojure_sketch.core.white_QMARK_.call(null, target_bg_color)) ? clojure_sketch.core.grey_color : clojure_sketch.core.white_color;
+  return target_el["style"]["background"] = new_bg_color;
 };
-src.core.clickHandler = function src$core$clickHandler(eObj) {
-  src.core.newColor = src.core.getNewColor.call(null, eObj.target.style["background"]);
-  return eObj.target.style["background"] = src.core.newColor;
-};
-src.core.containerEl.addEventListener("click", src.core.clickHandler);
-src.core.containerEl["innerHTML"] = src.core.populate.call(null);
+clojure_sketch.core.container_el.addEventListener("click", clojure_sketch.core.click_on_container);
+clojure_sketch.core.container_el["innerHTML"] = clojure_sketch.core.all_the_blocks.call(null);

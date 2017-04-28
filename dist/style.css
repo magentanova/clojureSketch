@@ -1,0 +1,22 @@
+html {
+	font-size: 14px;
+}
+
+h1 {
+	text-align: center;
+	font-family: Helvetica;
+	font-size: 3rem;
+}
+
+#container {
+	width: 480px;
+	margin: 0 auto;
+	font-size: 0;
+}
+
+.block {
+	width: 12px;
+	height: 12px;
+	background: #ddd;
+	display: inline-block;
+}

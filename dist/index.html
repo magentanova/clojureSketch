@@ -9,10 +9,10 @@
 	<div id="container"></div>
 	<script>
 	(function() {
-  	var useDevScript = (document.location.search.indexOf('devscript') !== -1)
-  	var src = useDevScript ? 'main.js' : 'main.min.js'
-  	var scriptEl = document.createElement('script')
-	  scriptEl.src = src
+		var useDevScript = (document.location.search.indexOf('devscript') !== -1)
+		var src = useDevScript ? 'main.js' : 'main.min.js'
+		var scriptEl = document.createElement('script')
+		scriptEl.src = src
 		document.body.appendChild(scriptEl)
 	})()
 	</script>
